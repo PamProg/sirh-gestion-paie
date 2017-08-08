@@ -24,10 +24,14 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 		
 		Grade grade = bulletin.getRemunerationEmploye().getGrade();
 		BigDecimal salaireBase = grade.getNbHeuresBase().multiply(grade.getTauxBase());
-		res.setSalaireDeBase(paieUtils.formaterBigDecimal(salaireBase));
+		String salaireBaseString = paieUtils.formaterBigDecimal(salaireBase);
+		res.setSalaireDeBase(salaireBaseString);
+		salaireBase = new BigDecimal(salaireBaseString);
 		
 		BigDecimal salaireBrut = salaireBase.add(bulletin.getPrimeExceptionnelle());
-		res.setSalaireBrut(paieUtils.formaterBigDecimal(salaireBrut));
+		String salaireBrutString = paieUtils.formaterBigDecimal(salaireBrut);
+		res.setSalaireBrut(salaireBrutString);
+		salaireBrut = new BigDecimal(salaireBrutString);
 		
 		ProfilRemuneration profil = bulletin.getRemunerationEmploye().getProfilRemuneration();
 		// https://stackoverflow.com/questions/22635945/adding-up-bigdecimals-using-streams
@@ -37,7 +41,9 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 												.map(t -> t.getTauxSalarial())
 												.reduce(BigDecimal.ZERO, BigDecimal::add)
 												.multiply(salaireBrut);
-		res.setTotalRetenueSalarial(paieUtils.formaterBigDecimal(totalRetenueSalariale));
+		String totalRetenueSalarialeString = paieUtils.formaterBigDecimal(totalRetenueSalariale);
+		totalRetenueSalariale = new BigDecimal(totalRetenueSalarialeString);
+		res.setTotalRetenueSalarial(totalRetenueSalarialeString);
 		
 		BigDecimal totalCotisationsPatronales = profil.getCotisationsNonImposables()
 												.stream()
@@ -45,10 +51,14 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 												.map(t -> t.getTauxPatronal())
 												.reduce(BigDecimal.ZERO, BigDecimal::add)
 												.multiply(salaireBrut);
-		res.setTotalCotisationsPatronales(paieUtils.formaterBigDecimal(totalCotisationsPatronales));
+		String totalCotisationsPatronalesString = paieUtils.formaterBigDecimal(totalCotisationsPatronales);
+		totalCotisationsPatronales = new BigDecimal(totalCotisationsPatronalesString);
+		res.setTotalCotisationsPatronales(totalCotisationsPatronalesString);
 		
 		BigDecimal netImposable = salaireBrut.subtract(totalRetenueSalariale);
-		res.setNetImposable(paieUtils.formaterBigDecimal(netImposable));
+		String netImposableString = paieUtils.formaterBigDecimal(netImposable);
+		netImposable = new BigDecimal(netImposableString);
+		res.setNetImposable(netImposableString);
 		
 		BigDecimal netAPayer = netImposable.subtract(profil.getCotisationsImposables()
 													.stream()
@@ -57,7 +67,9 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 													.reduce(BigDecimal.ZERO, BigDecimal::add)
 													.multiply(salaireBrut)
 												);
-		res.setNetAPayer(paieUtils.formaterBigDecimal(netAPayer));
+		String netAPayerString = paieUtils.formaterBigDecimal(netAPayer);
+		netAPayer = new BigDecimal(netAPayerString);
+		res.setNetAPayer(netAPayerString);
 		
 		return res;
 	}
