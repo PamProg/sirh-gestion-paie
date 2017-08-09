@@ -44,7 +44,6 @@ public class AvantageRepositoryTest {
 		assertThat(avantageRecup.getCode()).isEqualTo("CODEA");
 		
 		Avantage avantageAMettreAJour = avantageRepository.findOne(1);
-		avantageAMettreAJour.setId(1);
 		avantageAMettreAJour.setCode("CODEB");
 		avantageAMettreAJour.setNom("Super code génial trop fort !");
 		avantageAMettreAJour.setMontant(new BigDecimal("1000"));

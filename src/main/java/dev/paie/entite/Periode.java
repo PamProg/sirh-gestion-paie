@@ -2,12 +2,20 @@ package dev.paie.entite;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Periode {
 	
+	@Id
 	private Integer id;
 	
+	@Column(name = "date_debut")
 	private LocalDate dateDebut;
+	
+	@Column(name = "date_fin")
 	private LocalDate dateFin;
 	
 	public LocalDate getDateDebut() {
