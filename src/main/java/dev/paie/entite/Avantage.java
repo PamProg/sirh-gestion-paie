@@ -1,11 +1,19 @@
 package dev.paie.entite;
 
+import java.math.BigDecimal;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Avantage {
 
+	@Id
 	private Integer id;
+	
 	private String code;
 	private String nom;
-	private Integer montant;
+	private BigDecimal montant;
 
 	public String getCode() {
 		return code;
@@ -23,11 +31,11 @@ public class Avantage {
 		this.nom = nom;
 	}
 
-	public Integer getMontant() {
+	public BigDecimal getMontant() {
 		return montant;
 	}
 
-	public void setMontant(Integer montant) {
+	public void setMontant(BigDecimal montant) {
 		this.montant = montant;
 	}
 
