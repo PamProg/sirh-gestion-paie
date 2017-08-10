@@ -41,7 +41,7 @@ public class GradeServiceJdbcTemplate implements GradeService {
 
 	@Override
 	public List<Grade> lister() {
-		String sql = "Select * FROM grade";
+		String sql = "SELECT * FROM grade";
 		return this.jdbcTemplate.query(sql, (rs, rowNum) -> {
 			Grade g = new Grade();
 			g.setId(rs.getInt("id"));

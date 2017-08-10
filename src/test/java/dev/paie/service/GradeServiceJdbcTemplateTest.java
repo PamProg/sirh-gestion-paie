@@ -34,7 +34,6 @@ public class GradeServiceJdbcTemplateTest {
 //	éthode lister
 		
 		Grade nouveauGrade = new Grade();
-		nouveauGrade.setId(1);
 		nouveauGrade.setCode("Super chef");
 		nouveauGrade.setNbHeuresBase(new BigDecimal("35"));
 		nouveauGrade.setTauxBase(new BigDecimal("12.5"));
@@ -43,12 +42,11 @@ public class GradeServiceJdbcTemplateTest {
 		List<Grade> listeGrades = gradeService.lister();
 		assertThat(listeGrades.get(0).getCode()).isEqualTo("Super chef");
 		
-		Grade gradeAMettreAJour = new Grade();
-		gradeAMettreAJour.setId(1);
-		gradeAMettreAJour.setCode("CEO");
-		gradeAMettreAJour.setNbHeuresBase(new BigDecimal("40"));
-		gradeAMettreAJour.setTauxBase(new BigDecimal("15"));
-		gradeService.mettreAJour(gradeAMettreAJour);
+		nouveauGrade = listeGrades.get(0);
+		nouveauGrade.setCode("CEO");
+		nouveauGrade.setNbHeuresBase(new BigDecimal("40"));
+		nouveauGrade.setTauxBase(new BigDecimal("15"));
+		gradeService.mettreAJour(nouveauGrade);
 		
 		listeGrades = gradeService.lister();
 		assertThat(listeGrades.get(0).getCode()).isEqualTo("CEO");

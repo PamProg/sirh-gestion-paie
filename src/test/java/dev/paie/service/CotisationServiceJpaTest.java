@@ -35,7 +35,6 @@ public class CotisationServiceJpaTest {
 		// méthode lister
 		
 		Cotisation nouvelleCotisation = new Cotisation();
-		nouvelleCotisation.setId(1);
 		nouvelleCotisation.setCode("SCP");
 		nouvelleCotisation.setLibelle("La cotisation qui est super !");
 		nouvelleCotisation.setTauxSalarial(new BigDecimal("12.5"));
@@ -45,13 +44,11 @@ public class CotisationServiceJpaTest {
 		List<Cotisation> listeCotisations = cotisationService.lister();
 		assertThat(listeCotisations.get(0).getCode()).isEqualTo("SCP");
 		
-		Cotisation cotisationAMettreAJour = new Cotisation();
-		cotisationAMettreAJour.setId(1);
-		cotisationAMettreAJour.setCode("ABC");
-		cotisationAMettreAJour.setLibelle("La cotisation qui est vraiment génial !");
-		cotisationAMettreAJour.setTauxSalarial(new BigDecimal("20.5"));
-		cotisationAMettreAJour.setTauxPatronal(new BigDecimal("32.5"));
-		cotisationService.mettreAJour(cotisationAMettreAJour);
+		nouvelleCotisation.setCode("ABC");
+		nouvelleCotisation.setLibelle("La cotisation qui est vraiment génial !");
+		nouvelleCotisation.setTauxSalarial(new BigDecimal("20.5"));
+		nouvelleCotisation.setTauxPatronal(new BigDecimal("32.5"));
+		cotisationService.mettreAJour(nouvelleCotisation);
 		
 		listeCotisations = cotisationService.lister();
 		assertThat(listeCotisations.get(0).getCode()).isEqualTo("ABC");

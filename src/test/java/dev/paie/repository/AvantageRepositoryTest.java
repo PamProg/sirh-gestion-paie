@@ -34,7 +34,6 @@ public class AvantageRepositoryTest {
 		// méthode findOne
 		
 		Avantage nouvelAvantage = new Avantage();
-		nouvelAvantage.setId(1);
 		nouvelAvantage.setCode("CODEA");
 		nouvelAvantage.setNom("Super avantage");
 		nouvelAvantage.setMontant(new BigDecimal("200"));
@@ -58,7 +57,6 @@ public class AvantageRepositoryTest {
 		String code = "CODEC";
 		
 		Avantage nouvelAvantage = new Avantage();
-		nouvelAvantage.setId(1);
 		nouvelAvantage.setCode(code);
 		nouvelAvantage.setNom("Super avantage");
 		nouvelAvantage.setMontant(new BigDecimal("200"));
