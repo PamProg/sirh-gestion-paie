@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +11,11 @@
 </head>
 <body>
 
-	<ul class="nav nav-pills">
-		<li role="presentation"><a href="/paie">Accueil</a></li>
-		<li role="presentation"><a href="/paie/employes">Employés</a></li>
-		<li role="presentation"><a href="/paie/bulletins">Bulletins</a></li>
-	</ul>
+	<c:import url="../menu.jsp"></c:import>
 
-	<h1 class="text-center">Ajouter un employé</h1>
+	<h1 class="text-center">Ajouter un employÃ©</h1>
 
-	<form class="form-horizontal">
+	<form class="form-horizontal" method="post">
 		<fieldset>
 
 			<!-- Text input-->
@@ -32,9 +29,9 @@
 
 			<!-- Select Basic -->
 			<div class="form-group">
-				<label class="col-md-4 control-label" for="selectbasic">Entreprise</label>
+				<label class="col-md-4 control-label" for="entreprise">Entreprise</label>
 				<div class="col-md-4">
-					<select id="selectbasic" name="selectbasic" class="form-control">
+					<select id="entreprise" name="entreprise" class="form-control">
 						<c:forEach var="entreprise" items="${entreprises}">
 							<option value="${entreprise.denomination}">${entreprise.denomination}</option>
 						</c:forEach>

@@ -24,6 +24,27 @@ public class RemunerationEmploye {
 	@ManyToOne @JoinColumn(name = "grade_id")
 	private Grade grade;
 	
+	/**
+	 * 
+	 */
+	public RemunerationEmploye() {
+		super();
+	}
+
+	/**
+	 * @param matricule
+	 * @param entreprise
+	 * @param profilRemuneration
+	 * @param grade
+	 */
+	public RemunerationEmploye(String matricule, Entreprise entreprise,
+			ProfilRemuneration profilRemuneration, Grade grade) {
+		this.matricule = matricule;
+		this.entreprise = entreprise;
+		this.profilRemuneration = profilRemuneration;
+		this.grade = grade;
+	}
+	
 	public String getMatricule() {
 		return matricule;
 	}

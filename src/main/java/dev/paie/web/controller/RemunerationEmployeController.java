@@ -13,20 +13,27 @@ import org.springframework.web.servlet.ModelAndView;
 import dev.paie.entite.Entreprise;
 import dev.paie.entite.Grade;
 import dev.paie.entite.ProfilRemuneration;
+import dev.paie.entite.RemunerationEmploye;
 import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.GradeRepository;
-import dev.paie.repository.ProfilRenumerationRepository;
+import dev.paie.repository.ProfilRemunerationRepository;
+import dev.paie.repository.RemunerationEmployeRepository;
+import dev.paie.util.GestionFormulaireCreerEmploye;
 
 @Controller
 @RequestMapping("/employes")
 public class RemunerationEmployeController {
 	
+	@Autowired private RemunerationEmployeRepository employeRepo;
+	
 	@Autowired private EntrepriseRepository entrepriseRepo;
-	@Autowired private ProfilRenumerationRepository profilRepo;
+	@Autowired private ProfilRemunerationRepository profilRepo;
 	@Autowired private GradeRepository gradeRepo;
 	
+	@Autowired private GestionFormulaireCreerEmploye gestionFormulaire;
+	
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
-	public ModelAndView creerEmploye() {
+	public ModelAndView creerEmployeForm() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("employes/creerEmploye");
 		
@@ -47,8 +54,17 @@ public class RemunerationEmployeController {
 		ModelAndView mv = new ModelAndView();
 		
 		String matricule = req.getParameter("matricule");
-		String 
+		String nomEntreprise = req.getParameter("entreprise");
+		String codeProfil = req.getParameter("profil");
+		String codeGrade = req.getParameter("grade");
 		
+		Entreprise entreprise = gestionFormulaire.getEntrepriseWithName(nomEntreprise);
+		ProfilRemuneration profil = gestionFormulaire.getProfilWithCode(codeProfil);
+		Grade grade = gestionFormulaire.getGradeWithCode(codeGrade);
+		
+		employeRepo.save(new RemunerationEmploye(matricule, entreprise, profil, grade));
+		
+		mv.setViewName("employes/creerEmploye");
 		return mv;
 	}
 }

@@ -18,7 +18,7 @@ import dev.paie.entite.ProfilRemuneration;
 import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.GradeRepository;
 import dev.paie.repository.PeriodeRepository;
-import dev.paie.repository.ProfilRenumerationRepository;
+import dev.paie.repository.ProfilRemunerationRepository;
 
 @Service
 public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
@@ -28,7 +28,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 	@Autowired private CotisationService cotisationService;
 	@Autowired private EntrepriseRepository entrepriseRepo;
 	@Autowired private GradeRepository gradeRepo;
-	@Autowired private ProfilRenumerationRepository profilRepo;
+	@Autowired private ProfilRemunerationRepository profilRepo;
 	@Autowired private PeriodeRepository periodeRepo;
 	
 	@Override
@@ -63,8 +63,8 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		
 		for(int i=0 ; i<12 ; i++) {
 			Periode p = new Periode();
-			p.setDateDebut(LocalDate.of(2017, i+1, 1));
-			p.setDateFin(list.get(i).getDateDebut().with(TemporalAdjusters.lastDayOfMonth()));
+			p.setDateDebut(LocalDate.of(LocalDate.now().getYear(), i+1, 1));
+			p.setDateFin(p.getDateDebut().with(TemporalAdjusters.lastDayOfMonth()));
 			list.add(p);
 		}
 		
