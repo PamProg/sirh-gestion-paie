@@ -62,9 +62,10 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		List<Periode> list = new ArrayList<>();
 		
 		for(int i=0 ; i<12 ; i++) {
-			list.add(new Periode());
-			list.get(i).setDateDebut(LocalDate.of(2017, i+1, 01));
-			list.get(i).setDateFin(list.get(i).getDateDebut().with(TemporalAdjusters.lastDayOfMonth()));
+			Periode p = new Periode();
+			p.setDateDebut(LocalDate.of(2017, i+1, 1));
+			p.setDateFin(list.get(i).getDateDebut().with(TemporalAdjusters.lastDayOfMonth()));
+			list.add(p);
 		}
 		
 		return list;

@@ -2,6 +2,8 @@ package dev.paie.web.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,15 +37,18 @@ public class RemunerationEmployeController {
 		mv.addObject("profils", profils);
 		
 		List<Grade> grades = gradeRepo.findAll();
-		mv.addObject("grade", grades);
+		mv.addObject("grades", grades);
 		
 		return mv;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
-	public ModelAndView creerEmployePost() {
+	public ModelAndView creerEmployePost(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		// Créer l'employé
+		
+		String matricule = req.getParameter("matricule");
+		String 
+		
 		return mv;
 	}
 }
