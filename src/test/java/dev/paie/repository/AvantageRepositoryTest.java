@@ -36,7 +36,7 @@ public class AvantageRepositoryTest {
 		Avantage nouvelAvantage = new Avantage();
 		nouvelAvantage.setId(1);
 		nouvelAvantage.setCode("CODEA");
-		nouvelAvantage.setNom("Super code");
+		nouvelAvantage.setNom("Super avantage");
 		nouvelAvantage.setMontant(new BigDecimal("200"));
 		avantageRepository.save(nouvelAvantage);
 		
@@ -45,11 +45,26 @@ public class AvantageRepositoryTest {
 		
 		Avantage avantageAMettreAJour = avantageRepository.findOne(1);
 		avantageAMettreAJour.setCode("CODEB");
-		avantageAMettreAJour.setNom("Super code génial trop fort !");
+		avantageAMettreAJour.setNom("Super avantage génial trop fort !");
 		avantageAMettreAJour.setMontant(new BigDecimal("1000"));
 		avantageRepository.save(avantageAMettreAJour);
 		
 		avantageRecup = avantageRepository.findOne(1);
 		assertThat(avantageRecup.getCode()).isEqualTo("CODEB");
+	}
+	
+	@Test
+	public void test_chercher_par_code() {
+		String code = "CODEC";
+		
+		Avantage nouvelAvantage = new Avantage();
+		nouvelAvantage.setId(1);
+		nouvelAvantage.setCode(code);
+		nouvelAvantage.setNom("Super avantage");
+		nouvelAvantage.setMontant(new BigDecimal("200"));
+		avantageRepository.save(nouvelAvantage);
+		
+		Avantage av = avantageRepository.findOneByCode(code);
+		assertThat(av.getCode()).isEqualTo(code);
 	}
 }
