@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Paie</title>
-<link rel="stylesheet" href="<c:url value ='/bootstrap-3.3.7-dist/css/bootstrap.css'></c:url>">
+<link rel="stylesheet" href="<c:url value ='/css/bootstrap-3.3.7-dist/css/bootstrap.css'></c:url>">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
@@ -16,7 +16,7 @@
 	<h1 class="text-center">Liste des employés</h1>
 	
 	<div class="text-right">
-		<a href="paie/mvc/employes/creer" class="btn btn-default">Ajouter un employé</a>
+		<a href="/paie/mvc/employes/creer" class="btn btn-default">Ajouter un employé</a>
 	</div>
 	
 	<table class="table table-bordered table-striped">

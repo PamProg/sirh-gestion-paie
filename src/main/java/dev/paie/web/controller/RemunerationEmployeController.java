@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,7 +33,7 @@ public class RemunerationEmployeController {
 	
 	@Autowired private GestionFormulaireCreerEmploye gestionFormulaire;
 	
-	
+	@Secured({"ROLE_ADMINISTRATEUR", "ROLE_UTILISATEUR"})
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
 	public ModelAndView listerEmployes() {
 		ModelAndView mv = new ModelAndView();
@@ -43,6 +44,7 @@ public class RemunerationEmployeController {
 		return mv;
 	}
 	
+	@Secured("ROLE_ADMINISTRATEUR")
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
 	public ModelAndView creerEmployeForm() {
 		ModelAndView mv = new ModelAndView();
@@ -60,6 +62,7 @@ public class RemunerationEmployeController {
 		return mv;
 	}
 	
+	@Secured("ROLE_ADMINISTRATEUR")
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
 	public String creerEmployePost(HttpServletRequest req) {
 		String matricule = req.getParameter("matricule");

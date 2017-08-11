@@ -9,12 +9,13 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import dev.paie.config.SecurityConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.spring.JpaConfig;
 
 @Configuration
 @EnableWebMvc
-@Import({JpaConfig.class, ServicesConfig.class})
+@Import({JpaConfig.class, ServicesConfig.class, SecurityConfig.class})
 @ImportResource({"classpath:cotisations-imposables.xml", 
 				 "classpath:cotisations-non-imposables.xml",
 				 "classpath:entreprises.xml",
