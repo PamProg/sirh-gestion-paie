@@ -8,6 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Table grade.
+ * Correspond à un grade d'un employé
+ * @author ETY15
+ *
+ */
 @Entity
 public class Grade {
 	

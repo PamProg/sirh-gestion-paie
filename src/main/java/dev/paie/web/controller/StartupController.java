@@ -7,6 +7,11 @@ import org.springframework.stereotype.Controller;
 
 import dev.paie.service.InitialiserDonneesServiceDev;
 
+/**
+ * Controleur initialisant nos données via un listener
+ * @author ETY15
+ *
+ */
 @Controller
 public class StartupController {
 

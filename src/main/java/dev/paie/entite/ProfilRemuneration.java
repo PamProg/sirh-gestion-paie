@@ -11,6 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+/**
+ * Table profil_remuneration.
+ * Correspond à un profil d'un employé et contenant une liste
+ * d'avantages et/ou de cotisations
+ * @author ETY15
+ *
+ */
 @Entity(name = "profil_renumeration")
 public class ProfilRemuneration {
 

@@ -1,5 +1,11 @@
 package dev.paie.entite;
 
+/**
+ * Classe utile permettant de représenter un bulletin sous la forme d'un ensemble
+ * de String, correspondant à un double à deux chiffres après la virgule
+ * @author ETY15
+ *
+ */
 public class ResultatCalculRemuneration {
 	private String salaireDeBase;
 	private String salaireBrut;

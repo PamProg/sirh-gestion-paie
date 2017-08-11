@@ -7,6 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+/**
+ * Table remuneration_employe
+ * Correspond à un employé
+ * @author ETY15
+ *
+ */
 @Entity(name = "remuneration_employe")
 public class RemunerationEmploye {
 	

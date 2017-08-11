@@ -10,17 +10,31 @@ import org.springframework.stereotype.Service;
 
 import dev.paie.entite.Grade;
 
+/**
+ * Bean de Service.
+ * Permet d'insérer, de mettre à jour et de récupérer des Grade en base de données
+ * en utilisant une syntaxe SQL, grâce à JDBC
+ * @author ETY15
+ *
+ */
 @Service
 public class GradeServiceJdbcTemplate implements GradeService {
 
 	private JdbcTemplate jdbcTemplate;
 
+	/**
+	 * Initialise le template JDBC avec notre DataSource
+	 * @param dataSource
+	 */
 	@Autowired
 	public GradeServiceJdbcTemplate(DataSource dataSource) {
 		super();
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
+	/**
+	 * Sauve un Grade en bdd
+	 */
 	@Override
 	public void sauvegarder(Grade nouveauGrade) {
 		String sql = "INSERT INTO grade(id, code, nb_heures_base, taux_base) VALUES(?,?,?,?)";
@@ -30,6 +44,9 @@ public class GradeServiceJdbcTemplate implements GradeService {
 									  nouveauGrade.getTauxBase());
 	}
 
+	/**
+	 * Met à jour un Grade en bdd
+	 */
 	@Override
 	public void mettreAJour(Grade grade) {
 		String sql = "UPDATE grade SET code = ?, nb_heures_base = ?, taux_base = ? WHERE id = ?";
@@ -39,6 +56,9 @@ public class GradeServiceJdbcTemplate implements GradeService {
 									  grade.getId());
 	}
 
+	/**
+	 * Récupère tous les Grade en bdd
+	 */
 	@Override
 	public List<Grade> lister() {
 		String sql = "SELECT * FROM grade";

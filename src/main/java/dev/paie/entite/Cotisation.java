@@ -8,6 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Table cotisation.
+ * Correspond à une cotisation d'un profil d'un employé
+ * @author ETY15
+ *
+ */
 @Entity
 public class Cotisation {
 	

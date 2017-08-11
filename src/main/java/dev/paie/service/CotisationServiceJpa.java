@@ -11,6 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.entite.Cotisation;
 
+/**
+ * Bean de Service.
+ * Permet de persister des Cotisations en base de données 
+ * @author ETY15
+ *
+ */
 @Service
 public class CotisationServiceJpa implements CotisationService {
 	

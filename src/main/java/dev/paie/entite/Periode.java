@@ -8,6 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Table periode.
+ * Correspond à une période, et dans notre cas à chaque
+ * jours de chaque mois (ex 2017/01/01 à 2017/01/31)
+ * @author ETY15
+ *
+ */
 @Entity
 public class Periode {
 	

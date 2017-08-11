@@ -11,6 +11,13 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+
+/**
+ * Bean de configuration.
+ * Permet d'initialiser Spring Security et de le configurer
+ * @author ETY15
+ *
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled=true)
@@ -19,6 +26,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired private PasswordEncoder passwordEncoder;
 	@Autowired private DataSource dataSource;
 	
+	/**
+	 * Indiquer les droits des utilisateurs selon leur rôle.
+	 * Récupère un utilisateur en base, vérifie s'il est actif, puis
+	 * lui accorde des droit selon son rôle
+	 */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication()
@@ -28,6 +40,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.authoritiesByUsernameQuery("SELECT nom_utilisateur, role FROM utilisateur WHERE nom_utilisateur=?");
 	}
 
+	/**
+	 * Indique quelles pages sont accessibles par tous et lesquelles sont accessibles après connexion
+	 * Indique la page de connexion pour les ressources non accessibles sans autorisations
+	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http

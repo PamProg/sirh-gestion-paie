@@ -21,6 +21,12 @@ import dev.paie.repository.ProfilRemunerationRepository;
 import dev.paie.repository.RemunerationEmployeRepository;
 import dev.paie.util.GestionFormulaireCreerEmploye;
 
+/**
+ * Controleur de nos employés.
+ * Gère la création et la liste des employés
+ * @author ETY15
+ *
+ */
 @Controller
 @RequestMapping("/employes")
 public class RemunerationEmployeController {

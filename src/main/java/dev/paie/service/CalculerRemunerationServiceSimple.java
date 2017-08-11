@@ -11,6 +11,13 @@ import dev.paie.entite.ProfilRemuneration;
 import dev.paie.entite.ResultatCalculRemuneration;
 import dev.paie.util.PaieUtils;
 
+/**
+ * Bean de Service.
+ * Classe utile permettant de calculer divers informations susceptibles de se trouver
+ * dans un bulletin de salaire
+ * @author ETY15
+ *
+ */
 @Service
 public class CalculerRemunerationServiceSimple implements CalculerRemunerationService {
 

@@ -6,6 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Table entreprise
+ * Correspond à l'entreprise à laquelle un employé appartient
+ * @author ETY15
+ *
+ */
 @Entity
 public class Entreprise {
 

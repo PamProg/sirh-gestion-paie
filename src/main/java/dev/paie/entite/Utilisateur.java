@@ -8,6 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Table utilisateur
+ * Correspond à un utilisateur qui accèderait à notre application
+ * @author ETY15
+ *
+ */
 @Entity
 public class Utilisateur {
 	

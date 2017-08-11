@@ -13,6 +13,14 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * Bean de Configuration
+ * Permet d'initialiser l'EntityManager, d'indiquer notre mode de persistence,
+ * l'action réalisée à chaque lancement (par ex: Drop and Create) ainsi que le dialect de notre
+ * base (par ex: InnoDB, MyISAM, etc.)
+ * @author ETY15
+ *
+ */
 @Configuration
 @EnableTransactionManagement
 public class JpaConfig {

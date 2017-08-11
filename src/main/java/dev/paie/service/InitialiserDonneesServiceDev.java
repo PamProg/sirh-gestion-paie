@@ -24,6 +24,12 @@ import dev.paie.repository.PeriodeRepository;
 import dev.paie.repository.ProfilRemunerationRepository;
 import dev.paie.repository.UtilisateurRepository;
 
+/**
+ * Bean de Service.
+ * Initialise les données
+ * @author ETY15
+ *
+ */
 @Service
 public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 
@@ -38,6 +44,10 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 	@Autowired private PeriodeRepository periodeRepo;
 	@Autowired private UtilisateurRepository utilisateurRepo;
 	
+	/**
+	 * Initialise un jeu de données comprenant des Cotisation (imposables et non imposables),
+	 * des ProfilRemuneration, des Entreprise, des Grade, des Periode, des Utilisateur
+	 */
 	@Override
 	public void initialiser() {
 		
@@ -69,6 +79,10 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		
 	}
 
+	/**
+	 * Génère des Utilisateur de rôles différents
+	 * @return
+	 */
 	private List<Utilisateur> initUtilisateurs() {
 		List<Utilisateur> list = new ArrayList<>();
 		
@@ -82,6 +96,10 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		return list;
 	}
 
+	/**
+	 * Génère toutes les Periode de l'année en cours
+	 * @return
+	 */
 	private List<Periode> initPeriodes() {
 		List<Periode> list = new ArrayList<>();
 		

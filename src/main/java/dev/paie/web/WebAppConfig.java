@@ -13,6 +13,16 @@ import dev.paie.config.SecurityConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.spring.JpaConfig;
 
+/**
+ * Bean de Configuration.
+ * Active Spring MVC
+ * Import les Classe dont il va avoir besoin
+ * Récupère les données/bean de divers fichiers xlm (qui seront utilisé dans l'initialisation)
+ * Scan le package des Controller
+ * Indique comment les vues seront "resolvées" (en indiquant un prefixe et un suffixe)
+ * @author ETY15
+ *
+ */
 @Configuration
 @EnableWebMvc
 @Import({JpaConfig.class, ServicesConfig.class, SecurityConfig.class})

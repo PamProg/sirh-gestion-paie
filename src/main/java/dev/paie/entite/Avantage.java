@@ -7,6 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Table avantage
+ * Correspond à l'avantage d'un ProfilRemuneration
+ * @author ETY15
+ *
+ */
 @Entity
 public class Avantage {
 

@@ -8,10 +8,23 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+/**
+ * Permet d'initialiser notre DataSource avec les informations nécessaires
+ * @author ETY15
+ *
+ */
 @Configuration
 @PropertySource("classpath:app.properties")
 public class DataSourceMySQLConfig {
 	
+	/**
+	 * Bean indiquant les informations de connexion à une base de données
+	 * @param driver le driver utilisé
+	 * @param url l'url de notre base
+	 * @param username l'utilisateur de notre base
+	 * @param password le mot de passe de notre base
+	 * @return
+	 */
 	@Bean
 	public DataSource dataSource(@Value("${driver}") String driver,
 								 @Value("${url}") String url,

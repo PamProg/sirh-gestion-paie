@@ -8,6 +8,13 @@ import java.util.Locale;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * Bean de Service.
+ * Permet de formater un BigDecimal en String, avec
+ * deux chiffres après la virgule exactement
+ * @author ETY15
+ *
+ */
 @Service
 public class PaieUtils {
 	
