@@ -77,7 +77,6 @@ public class RemunerationEmployeController {
 		employeRepo.save(new RemunerationEmploye(matricule, entreprise, profil, grade));
 		
 		return "redirect:/mvc/employes/creer";
-//		return "redirect:creer";
 	}
 	
 	
