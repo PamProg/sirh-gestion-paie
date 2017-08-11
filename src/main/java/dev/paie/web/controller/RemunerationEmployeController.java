@@ -32,6 +32,17 @@ public class RemunerationEmployeController {
 	
 	@Autowired private GestionFormulaireCreerEmploye gestionFormulaire;
 	
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	public ModelAndView listerEmployes() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("employes/listerEmployes");
+		
+		List<RemunerationEmploye> employes = employeRepo.findAll();
+		mv.addObject("employes", employes);
+		return mv;
+	}
+	
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
 	public ModelAndView creerEmployeForm() {
 		ModelAndView mv = new ModelAndView();
@@ -50,9 +61,7 @@ public class RemunerationEmployeController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
-	public ModelAndView creerEmployePost(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		
+	public String creerEmployePost(HttpServletRequest req) {
 		String matricule = req.getParameter("matricule");
 		String nomEntreprise = req.getParameter("entreprise");
 		String codeProfil = req.getParameter("profil");
@@ -64,7 +73,9 @@ public class RemunerationEmployeController {
 		
 		employeRepo.save(new RemunerationEmploye(matricule, entreprise, profil, grade));
 		
-		mv.setViewName("employes/creerEmploye");
-		return mv;
+		return "redirect:/mvc/employes/creer";
+//		return "redirect:creer";
 	}
+	
+	
 }
