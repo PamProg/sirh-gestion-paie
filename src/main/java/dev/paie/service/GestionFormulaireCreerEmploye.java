@@ -1,4 +1,4 @@
-package dev.paie.util;
+package dev.paie.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -14,30 +14,38 @@
 
 	<c:import url="../menu.jsp"></c:import>
 
-	<h1 class="text-center">Liste des employés</h1>
+	<h1 class="text-center">Liste des bulletins</h1>
 	
 	<div class="text-right">
-		<a href="/paie/mvc/employes/creer" class="btn btn-default">Ajouter un employé</a>
+		<a href="/paie/mvc/bulletins/creer" class="btn btn-default">Créer un nouveau bulletin</a>
 	</div>
 	
 	<table class="table table-bordered table-striped">
 		<thead>
 			<tr>
 				<th>Date/heure création</th>
+				<th>Période</th>
 				<th>Matricule</th>
-				<th>Grade</th>
+				<th>Salaire brut</th>
+				<th>Net imposable</th>
+				<th>Net à payer</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="employe" items="${employes}">
+			<c:forEach var="bulletin" items="${bulletins}">
 				<tr>
 					<td>
-						${employe.dateHeureCreation.dayOfMonth}/${employe.dateHeureCreation.monthValue}/${employe.dateHeureCreation.year}
-						${employe.dateHeureCreation.hour}:${employe.dateHeureCreation.minute}:${employe.dateHeureCreation.second}
+						${bulletin.dateHeureCreation.dayOfMonth}/${bulletin.dateHeureCreation.monthValue}/${bulletin.dateHeureCreation.year}
+						${bulletin.dateHeureCreation.hour}:${bulletin.dateHeureCreation.minute}:${bulletin.dateHeureCreation.second}
 					</td>
 					
-					<td>${employe.matricule}</td>
-					<td>${employe.grade.code}</td>
+					<td>${bulletin.periode.dateDebut} - ${bulletin.periode.dateFin}</td>
+					<td>${bulletin.remunerationEmploye.matricule}</td>
+					<td>A faire</td>
+					<td>A faire</td>
+					<td>A faire</td>
+					<td>Visualiser - a faire</td>
 				</tr>
 			</c:forEach>
 		</tbody>		

@@ -1,8 +1,8 @@
 package dev.paie.entite;
 
 /**
- * Classe utile permettant de représenter un bulletin sous la forme d'un ensemble
- * de String, correspondant à un double à deux chiffres après la virgule
+ * Classe utile permettant de façonner un bulletin sous la forme d'un ensemble
+ * de String, correspondant à un BigDecimal à deux chiffres après la virgule
  * @author ETY15
  *
  */

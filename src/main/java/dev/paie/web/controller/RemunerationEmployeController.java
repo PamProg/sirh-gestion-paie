@@ -1,5 +1,6 @@
 package dev.paie.web.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,7 @@ import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.GradeRepository;
 import dev.paie.repository.ProfilRemunerationRepository;
 import dev.paie.repository.RemunerationEmployeRepository;
-import dev.paie.util.GestionFormulaireCreerEmploye;
+import dev.paie.service.GestionFormulaireCreerEmploye;
 
 /**
  * Controleur de nos employés.
@@ -80,7 +81,7 @@ public class RemunerationEmployeController {
 		ProfilRemuneration profil = gestionFormulaire.getProfilWithCode(codeProfil);
 		Grade grade = gestionFormulaire.getGradeWithCode(codeGrade);
 		
-		employeRepo.save(new RemunerationEmploye(matricule, entreprise, profil, grade));
+		employeRepo.save(new RemunerationEmploye(matricule, entreprise, profil, grade, LocalDateTime.now()));
 		
 		return "redirect:/mvc/employes/creer";
 	}
