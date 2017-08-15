@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 /**
  * Table profil_remuneration.
  * Correspond à un profil d'un employé et contenant une liste
@@ -25,8 +28,14 @@ public class ProfilRemuneration {
 	private Integer id;
 	
 	private String code;
-
+	
+	
+	// https://stackoverflow.com/questions/22821695/lazyinitializationexception-failed-to-lazily-initialize-a-collection-of-roles
+	// https://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence-api
+//	@ManyToMany(fetch = FetchType.EAGER)
+	// https://stackoverflow.com/questions/4334970/hibernate-cannot-simultaneously-fetch-multiple-bags
 	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "profil_cotisations_non_imposables",
 		joinColumns = @JoinColumn(name = "profil_renumeration_id", referencedColumnName = "id"),
 		inverseJoinColumns = @JoinColumn(name = "cotisations_non_imposables_id", referencedColumnName = "id")
@@ -35,6 +44,7 @@ public class ProfilRemuneration {
 	private List<Cotisation> cotisationsNonImposables;
 	
 	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "profil_cotisations_imposables",
 		joinColumns = @JoinColumn(name = "profil_renumeration_id", referencedColumnName = "id"),
 		inverseJoinColumns = @JoinColumn(name = "cotisations_imposables_id", referencedColumnName = "id")

@@ -33,7 +33,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="bulletin" items="${bulletins}">
+			<c:forEach var="bulletin" items="${bulletins}" varStatus="status">
 				<tr>
 					<td>
 						${bulletin.dateHeureCreation.dayOfMonth}/${bulletin.dateHeureCreation.monthValue}/${bulletin.dateHeureCreation.year}
@@ -42,10 +42,10 @@
 					
 					<td>${bulletin.periode.dateDebut} - ${bulletin.periode.dateFin}</td>
 					<td>${bulletin.remunerationEmploye.matricule}</td>
-					<td>A faire</td>
-					<td>A faire</td>
-					<td>A faire</td>
-					<td>Visualiser - a faire</td>
+					<td>${resultats[status.index].salaireBrut}</td>
+					<td>${resultats[status.index].netImposable}</td>
+					<td>${resultats[status.index].netAPayer}</td>
+					<td><a href="/${bulletin.id}">Visualiser</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>		

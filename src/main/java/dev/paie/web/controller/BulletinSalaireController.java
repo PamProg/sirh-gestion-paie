@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,9 +18,11 @@ import org.springframework.web.servlet.ModelAndView;
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.Periode;
 import dev.paie.entite.RemunerationEmploye;
+import dev.paie.entite.ResultatCalculRemuneration;
 import dev.paie.repository.BulletinSalaireRepository;
 import dev.paie.repository.PeriodeRepository;
 import dev.paie.repository.RemunerationEmployeRepository;
+import dev.paie.service.CalculerRemunerationService;
 import dev.paie.service.GestionFormulaireCreerBulletin;
 
 @Controller
@@ -31,6 +34,7 @@ public class BulletinSalaireController {
 	@Autowired private PeriodeRepository periodeRepo;
 	
 	@Autowired private GestionFormulaireCreerBulletin gestionFormulaire;
+	@Autowired private CalculerRemunerationService calculRemuneration;;
 	
 	@Secured({"ROLE_ADMINISTRATEUR", "ROLE_UTILISATEUR"})
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
@@ -41,7 +45,11 @@ public class BulletinSalaireController {
 		List<BulletinSalaire> bulletins = bulletinRepo.findAll();
 		mv.addObject("bulletins", bulletins);
 		
-		// TODO : rajouter une liste de ResultatCalculRemuneration correspondant aux bulletins
+		List<ResultatCalculRemuneration> resultatsCalcul = bulletins.stream()
+																	.map(b -> calculRemuneration.calculer(b))
+																	.collect(Collectors.toList());
+		
+		mv.addObject("resultats", resultatsCalcul);
 		
 		return mv;
 	}
@@ -77,5 +85,17 @@ public class BulletinSalaireController {
 		return "redirect:/mvc/bulletins/creer";
 	}
 	
+	
+	@Secured({"ROLE_ADMINISTRATEUR", "ROLE_UTILISATEUR"})
+	@RequestMapping(method = RequestMethod.GET, path = "/lister/{id}")
+	public ModelAndView visualiserBulletin(@PathVariable Integer id) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("bulletins/visualiserBulletin");
+		
+		BulletinSalaire bulletin = bulletinRepo.findOneById(id);
+		mv.addObject("bulletin", bulletin);
+		
+		return mv;
+	}
 	
 }
