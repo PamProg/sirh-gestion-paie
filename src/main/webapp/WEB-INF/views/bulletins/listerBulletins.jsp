@@ -45,7 +45,7 @@
 					<td>${resultats[status.index].salaireBrut}</td>
 					<td>${resultats[status.index].netImposable}</td>
 					<td>${resultats[status.index].netAPayer}</td>
-					<td><a href="/${bulletin.id}">Visualiser</a></td>
+					<td><a href="./lister/${bulletin.id}">Visualiser</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>		

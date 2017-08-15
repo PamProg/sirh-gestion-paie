@@ -18,21 +18,20 @@
 	
 	<div class="text-right">
 		<h4>Période</h4>
-		<p>${bulletin.periode}</p>
+		<p>${bulletin.periode.dateDebut} - ${bulletin.periode.dateFin}</p>
 	</div>
 	
 	<div class="text-left">
 		<h4>Entreprise</h4>
-<%-- 		<p>${entreprise.periode}</p> --%>
-<%-- 		<p>${entreprise.periode}</p> --%>
+		<p>${bulletin.remunerationEmploye.entreprise.denomination}</p>
+		<p>SIRET : ${bulletin.remunerationEmploye.entreprise.siret}</p>
 	</div>
 	
 	<div class="text-right">
-		<h4>Matricule</h4>
-		<p>${bulletin.remunerationEmploye.matricule}</p>
+		<p>Matricule : </p>
 	</div>
 	
-	<h3>Salaire</h3>
+	<h4>Salaire</h4>
 	<table class="table table-bordered table-striped">
 		<thead>
 			<tr>
@@ -47,12 +46,64 @@
 		<tbody>
 <%-- 			<c:forEach var="bulletin" items="${bulletins}" varStatus="status"> --%>
 				<tr>
-<%-- 					<td>${bulletin.periode.dateDebut} - ${bulletin.periode.dateFin}</td> --%>
-<%-- 					<td>${bulletin.remunerationEmploye.matricule}</td> --%>
-<%-- 					<td>${resultats[status.index].salaireBrut}</td> --%>
-<%-- 					<td>${resultats[status.index].netImposable}</td> --%>
-<%-- 					<td>${resultats[status.index].netAPayer}</td> --%>
-<%-- 					<td><a href="/${bulletin.id}">Visualiser</a></td> --%>
+					<td>A faire</td>
+					<td>A faire</td>
+					<td>A faire</td>
+					<td>A faire</td>
+					<td>A faire</td>
+					<td>A faire</td>
+				</tr>
+<%-- 			</c:forEach> --%>
+		</tbody>		
+	</table>
+	
+	<h4>Cotisations</h4>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Rubriques</th>
+				<th>Base</th>
+				<th>Taux salarial</th>
+				<th>Montant salarial</th>
+				<th>Taux patronal</th>
+				<th>Cotisations patronales</th>
+			</tr>
+		</thead>
+		<tbody>
+<%-- 			<c:forEach var="bulletin" items="${bulletins}" varStatus="status"> --%>
+				<tr>
+					<td>A faire</td>
+					<td>A faire</td>
+					<td>A faire</td>
+					<td>A faire</td>
+					<td>A faire</td>
+					<td>A faire</td>
+				</tr>
+<%-- 			</c:forEach> --%>
+		</tbody>		
+	</table>
+	
+	<h4>NET Imposables : </h4>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Rubriques</th>
+				<th>Base</th>
+				<th>Taux salarial</th>
+				<th>Montant salarial</th>
+				<th>Taux patronal</th>
+				<th>Cotisations patronales</th>
+			</tr>
+		</thead>
+		<tbody>
+<%-- 			<c:forEach var="bulletin" items="${bulletins}" varStatus="status"> --%>
+				<tr>
+					<td>A faire</td>
+					<td>A faire</td>
+					<td>A faire</td>
+					<td>A faire</td>
+					<td>A faire</td>
+					<td>A faire</td>
 				</tr>
 <%-- 			</c:forEach> --%>
 		</tbody>		
