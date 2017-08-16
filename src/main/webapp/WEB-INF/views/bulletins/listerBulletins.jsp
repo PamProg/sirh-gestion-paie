@@ -33,19 +33,19 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="bulletin" items="${bulletins}" varStatus="status">
+			<c:forEach var="bulletinRes" items="${bulletinsResultats}" varStatus="status">
 				<tr>
 					<td>
-						${bulletin.dateHeureCreation.dayOfMonth}/${bulletin.dateHeureCreation.monthValue}/${bulletin.dateHeureCreation.year}
-						${bulletin.dateHeureCreation.hour}:${bulletin.dateHeureCreation.minute}:${bulletin.dateHeureCreation.second}
+						${bulletinRes.key.dateHeureCreation.dayOfMonth}/${bulletinRes.key.dateHeureCreation.monthValue}/${bulletinRes.key.dateHeureCreation.year}
+						${bulletinRes.key.dateHeureCreation.hour}:${bulletinRes.key.dateHeureCreation.minute}:${bulletinRes.key.dateHeureCreation.second}
 					</td>
 					
-					<td>${bulletin.periode.dateDebut} - ${bulletin.periode.dateFin}</td>
-					<td>${bulletin.remunerationEmploye.matricule}</td>
-					<td>${resultats[status.index].salaireBrut}</td>
-					<td>${resultats[status.index].netImposable}</td>
-					<td>${resultats[status.index].netAPayer}</td>
-					<td><a href="./lister/${bulletin.id}">Visualiser</a></td>
+					<td>${bulletinRes.key.periode.dateDebut} - ${bulletinRes.key.periode.dateFin}</td>
+					<td>${bulletinRes.key.remunerationEmploye.matricule}</td>
+					<td>${bulletinRes.value.salaireBrut}</td>
+					<td>${bulletinRes.value.netImposable}</td>
+					<td>${bulletinRes.value.netAPayer}</td>
+					<td><a href="./visualiser?id=${bulletinRes.key.id}">Visualiser</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>		

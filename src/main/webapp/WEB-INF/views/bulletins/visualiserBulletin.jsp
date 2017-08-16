@@ -28,7 +28,7 @@
 	</div>
 	
 	<div class="text-right">
-		<p>Matricule : </p>
+		<h4>Matricule : ${bulletin.remunerationEmploye.matricule}</h4>
 	</div>
 	
 	<h4>Salaire</h4>

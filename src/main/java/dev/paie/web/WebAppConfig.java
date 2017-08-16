@@ -3,6 +3,7 @@ package dev.paie.web;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.servlet.ViewResolver;
@@ -31,7 +32,8 @@ import dev.paie.spring.JpaConfig;
 				 "classpath:entreprises.xml",
 				 "classpath:profils-remuneration.xml",
 				 "classpath:grades.xml"})
-@ComponentScan("dev.paie.web.controller")
+@ComponentScan({"dev.paie.web.controller", "dev.paie.config.aspect"})
+@EnableAspectJAutoProxy
 public class WebAppConfig {
 	@Bean
 	public ViewResolver viewResolver() {

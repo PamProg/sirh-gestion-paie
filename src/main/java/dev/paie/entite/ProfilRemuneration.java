@@ -11,9 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 /**
  * Table profil_remuneration.
  * Correspond à un profil d'un employé et contenant une liste
@@ -35,7 +32,7 @@ public class ProfilRemuneration {
 //	@ManyToMany(fetch = FetchType.EAGER)
 	// https://stackoverflow.com/questions/4334970/hibernate-cannot-simultaneously-fetch-multiple-bags
 	@ManyToMany
-	@LazyCollection(LazyCollectionOption.FALSE)
+//	@LazyCollection(LazyCollectionOption.FALSE) Mauvaise pratique car ralenti beaucoup trop l'appli
 	@JoinTable(name = "profil_cotisations_non_imposables",
 		joinColumns = @JoinColumn(name = "profil_renumeration_id", referencedColumnName = "id"),
 		inverseJoinColumns = @JoinColumn(name = "cotisations_non_imposables_id", referencedColumnName = "id")
@@ -44,7 +41,7 @@ public class ProfilRemuneration {
 	private List<Cotisation> cotisationsNonImposables;
 	
 	@ManyToMany
-	@LazyCollection(LazyCollectionOption.FALSE)
+//	@LazyCollection(LazyCollectionOption.FALSE) Mauvaise pratique car ralenti beaucoup trop l'appli
 	@JoinTable(name = "profil_cotisations_imposables",
 		joinColumns = @JoinColumn(name = "profil_renumeration_id", referencedColumnName = "id"),
 		inverseJoinColumns = @JoinColumn(name = "cotisations_imposables_id", referencedColumnName = "id")

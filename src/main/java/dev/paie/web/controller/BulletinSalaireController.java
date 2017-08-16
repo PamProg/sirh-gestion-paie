@@ -3,6 +3,7 @@ package dev.paie.web.controller;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.paie.entite.BulletinSalaire;
@@ -24,6 +25,7 @@ import dev.paie.repository.PeriodeRepository;
 import dev.paie.repository.RemunerationEmployeRepository;
 import dev.paie.service.CalculerRemunerationService;
 import dev.paie.service.GestionFormulaireCreerBulletin;
+import dev.paie.service.GestionTransactionBulletin;
 
 @Controller
 @RequestMapping("/bulletins")
@@ -34,7 +36,8 @@ public class BulletinSalaireController {
 	@Autowired private PeriodeRepository periodeRepo;
 	
 	@Autowired private GestionFormulaireCreerBulletin gestionFormulaire;
-	@Autowired private CalculerRemunerationService calculRemuneration;;
+	
+	@Autowired private GestionTransactionBulletin gestionTransactionBulletin;
 	
 	@Secured({"ROLE_ADMINISTRATEUR", "ROLE_UTILISATEUR"})
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
@@ -42,14 +45,9 @@ public class BulletinSalaireController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/listerBulletins");
 		
-		List<BulletinSalaire> bulletins = bulletinRepo.findAll();
-		mv.addObject("bulletins", bulletins);
+		Map<BulletinSalaire, ResultatCalculRemuneration> bulletinsResultats = gestionTransactionBulletin.getMapBulletinsCalculs();
 		
-		List<ResultatCalculRemuneration> resultatsCalcul = bulletins.stream()
-																	.map(b -> calculRemuneration.calculer(b))
-																	.collect(Collectors.toList());
-		
-		mv.addObject("resultats", resultatsCalcul);
+		mv.addObject("bulletinsResultats", bulletinsResultats);
 		
 		return mv;
 	}
@@ -87,8 +85,8 @@ public class BulletinSalaireController {
 	
 	
 	@Secured({"ROLE_ADMINISTRATEUR", "ROLE_UTILISATEUR"})
-	@RequestMapping(method = RequestMethod.GET, path = "/lister/{id}")
-	public ModelAndView visualiserBulletin(@PathVariable Integer id) {
+	@RequestMapping(method = RequestMethod.GET, path = "/visualiser")
+	public ModelAndView visualiserBulletin(@RequestParam Integer id) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/visualiserBulletin");
 		
